@@ -29,7 +29,7 @@
 
 - `router` routes defined in this package. usually routes will be registered in `init` function. And with function `WrapHandler`, you can write handlers in a common way. usually binding params and trans them to model in models here.
 
-- `service` functions hold your logic in this package, usually combine your codes in model and pass messages to IM.
+- `service` functions hold your logic in this package, usually combine your codes in model and pass messages to MQ.
 
 - `db.config.yaml` config file.
 
