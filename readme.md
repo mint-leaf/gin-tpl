@@ -39,7 +39,7 @@
 
 - clone:
 
-  git clone github.com/mint-leaf/gin-tpl
+        git clone github.com/mint-leaf/gin-tpl
 
 - replace:
 
