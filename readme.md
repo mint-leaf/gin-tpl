@@ -23,13 +23,13 @@
 
 - `lib` errors definitions and some wraps for packages such as cdn, oss, sms and so on
 
-- `models` models represents the most basic abstract structures, also binding with database and cache store in there, functions related with orm and cache model also in this directory. any io error throws by any function in models must be written in log system. struct in models packages can not import object from other package in application especially packages behind models dir, on the other word, any other package should be able to import models package without worry about cycle import problem. Model in models package can contain `trans` method used to trans from elements in `params` package.
+- `models` models represents the most basic abstract structures, also binding with database and cache store in there, functions related with orm and cache model also in this directory. any io error throws by any function in models must be written in log system. package in models can not import object from other package in application except packages with the same level, on the other word, any other package should be able to import models package without worry about cycle import problem. Object in models package can contain `trans` method used to trans from elements in `params` package.
 
-- `param` holds params from outside, usually from frontend, usually build from some object from models package. common structures like `pager` which used to deal with pagination request also can be found in it.
+- `param` holds params from outside, usually from frontend, built from some objects from models package. common structures like `pager` which used to deal with pagination request also can be found in it.
 
 - `router` routes defined in this package. usually routes will be registered in `init` function. And with function `WrapHandler`, you can write handlers in a common way. usually binding params and trans them to model in models here.
 
-- `service` functions hold your logic in this package, usually combine your codes in model and pass messages to MQ.
+- `service` functions hold your logic in this package, usually combine your code in model, pass messages to MQ and other.
 
 - `db.config.yaml` config file.
 
