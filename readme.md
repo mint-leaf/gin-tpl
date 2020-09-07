@@ -23,11 +23,11 @@
 
 - `lib` errors definitions and some wraps for packages such as cdn, oss, sms and so on
 
-- `models` models represents the most basic abstract structures, also binding with database and cache store in there, functions related with orm and cache model also in this directory. any io error throws by any function in models must be written in log system. package in models can not import object from other package in application except packages with the same level, on the other word, any other package should be able to import models package without worry about cycle import problem. Object in models package can contain `trans` method used to trans from elements in `params` package.
+- `models` models represents the most basic abstract structures, also binding with database and cache stored in there, functions related with orm and cache are also in this directory. any io error throws by any function in models must be written to log system. packages in models can not import object from any other package except those with the same level, on the other word, any other package should be able to import models' packages without worry about cycle import problem. object in models package could contain `trans` method used to trans from elements in `params` package.
 
-- `param` holds params from outside, usually from frontend, built from some objects from models package. common structures like `pager` which used to deal with pagination request also can be found in it.
+- `param` holds params from outside, usually from frontend, usually combined with some objects from models package. common structures like `pager` which used to deal with pagination request also can be found in it.
 
-- `router` routes defined in this package. usually routes will be registered in `init` function. And with function `WrapHandler`, you can write handlers in a common way. usually binding params and trans them to model in models here.
+- `router` routes defined in this package. usually routes will be registered in `init` function. and with function `WrapHandler`, you can write handlers in a common way. usually binding params and trans them to object in models here.
 
 - `service` functions hold your logic in this package, usually combine your code in model, pass messages to MQ and other.
 
@@ -43,11 +43,15 @@
 
 - replace:
 
-  replace all `github.com/mint-leaf/gin-tpl` in import block with your app name
+  - in your project root dir and replace all `github.com/mint-leaf/gin-tpl` in import block with `YOUR_APP_NAME`
 
-- write your code:
+- go mod:
 
-  write your code in your app and do not forget register routes in main.go
+        go mod init {{YOUR_APP_NAME}}
+
+- if GOPROXY:
+
+  - use [goproxy.io](https://goproxy.io/) or [goproxy.cn](https://goproxy.cn/)
 
 ## Contribute
 
